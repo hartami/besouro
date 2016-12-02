@@ -12,7 +12,8 @@ import java.util.*;
  */
 public class FileAccess {
 	public Scanner x;
-	// public String[] episode;
+	public String[] timestamp;
+	public String[] timestampnew;
 	public void openFile() {
 		try {
 			x = new Scanner(new File ("C:\\Users\\April\\Documents\\Kuliah EMSE\\Internship Project\\besouroEpisodes.txt"));
@@ -26,12 +27,14 @@ public class FileAccess {
 		// an iteration to read the file
 		while (x.hasNext()) {
 			String column1 = x.next();  // The first column of besouroepisode.txt
-			String[] timestamp = column1.split("(?<=\\G.{10})");
-			
 			int i=0;
-			//episode[i] = timestamp[i];
+			timestamp = column1.split("(?<=\\G.{10})");
 			System.out.println(timestamp[i]);
+			Set<String> orderedUniqueTimestamp = new LinkedHashSet<String>(Arrays.asList(timestamp));
+			System.out.println(orderedUniqueTimestamp);
+		
 			i++;
+				
 			
 			String column2 = x.next();
 			String column3 = x.next();
@@ -40,6 +43,14 @@ public class FileAccess {
 			
 		}
 		
+	}
+	
+	public String[] getTimestamp(){
+		return timestamp;
+	}
+	
+	public void setTimestamp(String[] timestamp){
+		this.timestamp = timestamp;
 	}
 	
 	public void closeFile(){

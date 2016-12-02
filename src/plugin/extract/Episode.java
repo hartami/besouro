@@ -1,17 +1,19 @@
 package plugin.extract;
+/*
+ * This is to find episode in file actions.txt
+ */
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+public class Episode {
 
-public class NumberofTest {
-	
-	public static void main(String[] args)
-	{
-	    double count = 0,countBuffer=0,countLine=0;
-	    
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		double count = 0,countBuffer=0,countLine=0;
 	    String lineNumber = "";
 	    String filePath = "C:\\Users\\April\\Documents\\Kuliah EMSE\\Internship Project\\actions.txt";
 	    BufferedReader br;
@@ -19,7 +21,6 @@ public class NumberofTest {
 	    FileAccess inputSearch = new FileAccess();
 	      inputSearch.getTimestamp();
 	  
-	    
 	    
 	    try {
 	        br = new BufferedReader(new FileReader(filePath));
@@ -55,7 +56,8 @@ public class NumberofTest {
 
 	      System.out.println("Times found at--"+count);
 	      System.out.println("Word found at--"+lineNumber);
-	  }
+
+
+	}
 
 }
-
