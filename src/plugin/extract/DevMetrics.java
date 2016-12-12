@@ -18,6 +18,11 @@ public class DevMetrics {
 	 */
 	public DevMetrics(double cc, long loc, int nt, int ift, int ist) {
 		// TODO Auto-generated constructor stub
+		cc = 0.00;
+		loc = 0;
+		nt = 0;
+		ift = 0;
+		ist = 0;
 		codecoverage = cc;
 		lineofcode = loc;
 		numberoftest = nt;
@@ -26,12 +31,10 @@ public class DevMetrics {
 	}
 
 	public static void main(String[] args) {
-		
-		FileAccess a = new FileAccess();
+		NumberofExecutedTest a = new NumberofExecutedTest();
 		a.openFile ();
 		a.readFile ();
-		a.closeFile ();
-		
-		
+		a.printNumberofExecutedTest();
+		a.closeFile ();	
 	}
 }

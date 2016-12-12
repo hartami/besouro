@@ -1,16 +1,17 @@
+/**
+ * Jumlah tes yang telah dieksekusi
+ */
 package plugin.extract;
 
 import java.io.File;
 import java.util.Scanner;
 
 
-
-/*
- * NumberofTest dihitung berdasarkan jumlah @Test dalam program java
+/**
+ * @author April
+ *
  */
-
-
-public class NumberofTest {
+public class NumberofExecutedTest {
 	
 	public Scanner x;
 	public String[] actiontype;
@@ -46,8 +47,8 @@ public class NumberofTest {
 				String testresult = x.next();
 				
 				System.out.println(programname);
-				NumberofTest b = new NumberofTest();
-				b.calculateTest(programname);
+				System.out.println("The number of test is "+numberoftest);
+				numberoftest = numberoftest + 1;
 				
 			}
 			
@@ -71,20 +72,14 @@ public class NumberofTest {
 		
 	}
 	
-	public void calculateTest(String program){
-		System.out.println("The name of the program is "+program);
+	public void printNumberofExecutedTest(){
+		System.out.println("The number of test is "+nt);
 	}
 	
 	public void closeFile(){
 		x.close();
 	}
 
-	public static void main(String[] args) {
-		NumberofTest a = new NumberofTest();
-		a.openFile ();
-		a.readFile ();
-		a.closeFile ();	
-	}
 	
-}
 
+}
