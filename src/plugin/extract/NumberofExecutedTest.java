@@ -17,6 +17,8 @@ public class NumberofExecutedTest {
 	public String[] actiontype;
 	public int i;
 	public int numberoftest = 0;
+	public int numberoffailedtest =0;
+	public int numberofsuccessfultest = 0;
 	int nt;
 	
 	public void openFile() {
@@ -47,9 +49,17 @@ public class NumberofExecutedTest {
 				String testresult = x.next();
 				
 				System.out.println(programname);
-				System.out.println("The number of test is "+numberoftest);
 				numberoftest = numberoftest + 1;
-				
+				if (testresult.equals("OK")) {
+					numberofsuccessfultest = numberofsuccessfultest +1 ;
+				}
+					else {
+						numberoffailedtest =numberoffailedtest +1 ;
+				}
+				System.out.println("The number of executed test is "+numberoftest);
+				System.out.println("The number of successful test is "+numberofsuccessfultest);
+				System.out.println("The number of failed test is "+numberoffailedtest);
+
 			}
 			
 			if (actiontype[i].equals("UnitTestSessionAction")) {
@@ -72,9 +82,7 @@ public class NumberofExecutedTest {
 		
 	}
 	
-	public void printNumberofExecutedTest(){
-		System.out.println("The number of test is "+nt);
-	}
+
 	
 	public void closeFile(){
 		x.close();

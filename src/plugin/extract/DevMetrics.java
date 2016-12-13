@@ -34,7 +34,6 @@ public class DevMetrics {
 		NumberofExecutedTest a = new NumberofExecutedTest();
 		a.openFile ();
 		a.readFile ();
-		a.printNumberofExecutedTest();
 		a.closeFile ();	
 	}
 }
