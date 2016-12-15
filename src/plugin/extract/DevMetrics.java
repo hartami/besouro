@@ -1,5 +1,5 @@
 /**
- * 
+ * Class DevMetrics contains some variables; code coverage, lines of code, number of tests, number of failed tests, and number of successful tests. 
  */
 package plugin.extract;
 

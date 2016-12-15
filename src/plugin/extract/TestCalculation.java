@@ -1,116 +1,82 @@
 /**
- * 
+ * This is a class to calculate the number of annotation @Test in a program.
+ * The program is taken from the program name of NumberofExecutedTest.java
  */
 package plugin.extract;
 
-import java.lang.reflect.Method;
-import java.util.Date;
+
+import besouro.plugin.ProgrammingSessionTest; //just for testing another java program
+import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.NoSuchElementException;
 
 
 /**
  * @author April
- * Cara menghitung @Test , pertama harus memakai getMethod, dan kemudian dihitung mana yang merupakan method test.
- *
+ * 
  */
 public class TestCalculation {
-	 public static void main(String[] args)
-	    {
-	        // Get the Class object associated with this class.
-	        NumberofTest program = new NumberofTest();
-	        Class progClass = program.getClass();
-
-	        try
-	        {
-	            // Get the method named sayHello.
-	            Method helloMethod = progClass.getMethod(
-	                "readFile", null);
-	            System.out.println("Public method found: " +
-	                helloMethod.toString());
-	        }
-	        catch (NoSuchMethodException ex)
-	        {
-	            System.out.println("Method either doesn't exist " +
-	                "or is not public: " + ex.toString());
-	        }
-
-	        try
-	        {
-	            // Get the method named setStr.
-	            Class[] args1 = new Class[1];
-	            args1[0] = String.class;
-	            Method strMethod = progClass.getMethod(
-	                "calculateTest", args1);
-	            System.out.println("Public method found: " +
-	                strMethod.toString());
-	        }
-	        catch (NoSuchMethodException ex)
-	        {
-	            System.out.println("Method either doesn't exist " +
-	                "or is not public: " + ex.toString());
-	        }
-
-	        try
-	        {
-	            // Get the method named setDate.
-	            Class[] args2 = new Class[1];
-	            args2[0] = Date.class;
-	            Method dateMethod = progClass.getMethod(
-	                "setDate", args2);
-	            System.out.println("Public method found: " +
-	                dateMethod.toString());
-	        }
-	        catch (NoSuchMethodException ex)
-	        {
-	            System.out.println("Method either doesn't exist " +
-	                "or is not public: " + ex.toString());
-	        }
-
-	        try
-	        {
-	        	 // Get the method named setI.
-	            Class[] args3 = new Class[1];
-	            args3[0] = Integer.TYPE;
-	            Method iMethod = progClass.getMethod(
-	                "setI", args3);
-	            System.out.println("Public method found: " +
-	                iMethod.toString());
-	        }
-	        catch (NoSuchMethodException ex)
-	        {
-	            System.out.println("Method either doesn't exist " +
-	                "or is not public: " + ex.toString());
-	        }
-	    }
-
-	    public TestCalculation()
-	    {
-	    }
-
-	    public String sayHello()
-	    {
-	        return "Hello!";
-	    }
-
-	    public void setStr(String str)
-	    {
-	        this.str = str;
-	    }
-
-	    private void setDate(Date date)
-	    {
-	        this.date = date;
-	    }
-
-	    private void setI(int i)
-	    {
-	    	 this.i = i;
-	    }
-
-	    public String str = "Hello";
-	    private Date date = new Date();
-	    protected int i = 0;
 	
+    double count = 0,countBuffer=0,countLine=0;
+    String lineNumber = "";
+    String filePath = "C:\\Users\\April\\Documents\\Kuliah EMSE\\Internship Project\\actions.txt";
+    BufferedReader br;
+    String line = "";
+    String namaProgram ;
+       
+      
+	
+	public TestCalculation (String pn) {
+		namaProgram = pn;
+		File file = new File(pn);
 
-	        }
+	}
+	
+	public void readNumberofTest() {
+		Class<ProgrammingSessionTest> aClass = ProgrammingSessionTest.class;
+		
+		try {
+	        br = new BufferedReader(new FileReader(filePath));
+	        try {
+	            while((line = br.readLine()) != null)
+	            {
+	                countLine++;
+	                //System.out.println(line);
+	                String[] words = line.split(" ");
+	                for (String word : words) {
+	                    if (word.equals("UnitTestCaseAction")) {
+	                      count++;
+	                      countBuffer++;
+	                    }
+	                  }
+
+	                  if(countBuffer > 0)
+	                  {
+	                      countBuffer = 0;
+	                      lineNumber += countLine + ",";
+	                  }
+
+	              }
+	              br.close();
+	          } catch (IOException e) {
+	              // TODO Auto-generated catch block
+	              e.printStackTrace();
+	          }
+	      } catch (FileNotFoundException e) {
+	          // TODO Auto-generated catch block
+	          e.printStackTrace();
+	      }
+
+	      System.out.println("The number of @test found --"+count+" times in"+namaProgram);
+	     // System.out.println("Word found at--"+lineNumber);
+
+	}
+
+
+	
+}
 	
 

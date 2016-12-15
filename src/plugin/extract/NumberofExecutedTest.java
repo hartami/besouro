@@ -1,5 +1,5 @@
 /**
- * Jumlah tes yang telah dieksekusi
+ * This Class contains the number of executed test from file.
  */
 package plugin.extract;
 
@@ -48,7 +48,6 @@ public class NumberofExecutedTest {
 				String programname = x.next();
 				String testresult = x.next();
 				
-				System.out.println(programname);
 				numberoftest = numberoftest + 1;
 				if (testresult.equals("OK")) {
 					numberofsuccessfultest = numberofsuccessfultest +1 ;
@@ -59,6 +58,8 @@ public class NumberofExecutedTest {
 				System.out.println("The number of executed test is "+numberoftest);
 				System.out.println("The number of successful test is "+numberofsuccessfultest);
 				System.out.println("The number of failed test is "+numberoffailedtest);
+				TestCalculation a = new TestCalculation(programname);
+				a.readNumberofTest();
 
 			}
 			
